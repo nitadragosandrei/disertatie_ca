@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Spreadsheet from './components/Spreadsheet/Spreadsheet';
 import * as serviceWorker from './serviceWorker';
-import SidebarMenu from "./components/Sidebar/Sidebar"
+import Sidebar from './components/Sidebar/Sidebar';
+
 
 ReactDOM.render(
   <React.StrictMode>
-   <Spreadsheet />
-   <SidebarMenu />
-  
+    <Sidebar />,
+    <Spreadsheet />
+
   
   </React.StrictMode>,
   document.getElementById('root')
