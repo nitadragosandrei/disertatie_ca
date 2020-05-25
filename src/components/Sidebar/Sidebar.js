@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import BurgerMenu from 'react-burger-menu';
 import MenuWrap from './MenuWrap';
+import '@fortawesome/react-fontawesome'; 
 import './Sidebar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Sidebar extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      currentMenu: 'slide',
+      currentMenu: 'elastic',
       side: 'left'
     };
   }
@@ -22,14 +24,10 @@ class Sidebar extends Component {
 
   getItems() {
     let items = [
-      <a key="0" href=""><i className="fa fa-fw fa-star-o" /><span className="button-text">Favorites</span></a>,
-      <a key="1" href=""><i className="fa fa-fw fa-bell-o" /><span>Alerts</span></a>,
-      <a key="2" href=""><i className="fa fa-fw fa-envelope-o" /><span>Messages</span></a>,
-      <a key="3" href=""><i className="fa fa-fw fa-comment-o" /><span>Comments</span></a>,
-      <a key="4" href=""><i className="fa fa-fw fa-bar-chart-o" /><span>Analytics</span></a>,
-      <a key="5" href=""><i className="fa fa-fw fa-newspaper-o" /><span>Reading List</span></a>
-    ];
-
+      <h1><i class="fa fa-contao fa2x"/>oncEng App</h1>,
+      <a key="0" className="button-text" href=""><i className="fa fa-fw fa-star-o" /><span >Favorites</span></a>,
+      <a key="1" className="button-text" href=""><i className="fa fa-fw fa-bell-o" /><span>Alerts</span></a>,
+      <a key="2" className="button-text" href=""><i className="fa fa-fw fa-envelope-o" /><span>Messages</span></a>]
     return items;
   }
 
