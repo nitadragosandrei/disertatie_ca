@@ -3,6 +3,31 @@
     color:white;
     font-size: 30px;
 }
+.bm-button-logout{
+    position: absolute;
+    bottom: 10px;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: rgb(250, 250, 250);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.bm-button{
+  
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: rgb(250, 250, 250);
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .bm-burger-button {
     position: fixed;

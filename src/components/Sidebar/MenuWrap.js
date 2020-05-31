@@ -7,6 +7,7 @@ class MenuWrap extends Component {
       this.state = {
         hidden: false
       };
+
     }
   
     componentWillReceiveProps(nextProps) {
