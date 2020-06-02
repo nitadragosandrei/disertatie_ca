@@ -5,11 +5,25 @@ import Spreadsheet from './components/Spreadsheet/Spreadsheet';
 import * as serviceWorker from './serviceWorker';
 import Sidebar from './components/Sidebar/Sidebar';
 import Draggable from 'react-draggable';
+import Login from './components/Login/Login';
+import { Amplify } from 'aws-amplify';
+import config from './config';
+
+Amplify.configure({
+  Auth: {
+    mandatorySignIn: true,
+    region: config.cognito.REGION,
+    userPoolId: config.cognito.USER_POOL_ID,
+    identityPoolId: config.cognito.IDENTITY_POOL_ID,
+    userPoolWebClientId: config.cognito.APP_CLIENT_ID
+  }
+});
 
 ReactDOM.render(
   <div>
     <Sidebar />
-    <Spreadsheet />    
+    <Spreadsheet />
+    <Login />
   </div>,
 
   document.getElementById('root')
