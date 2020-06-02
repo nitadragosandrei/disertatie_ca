@@ -23,12 +23,14 @@ ReactDOM.render(
   <div>
     <Sidebar />
     <Spreadsheet />
-    <Login />
+    <Login></Login>
+    
   </div>,
 
   document.getElementById('root')
 );
 
+serviceWorker.unregister();
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<App />, rootElement);
 // If you want your app to work offline and load faster, you can change
