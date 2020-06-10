@@ -4,6 +4,7 @@ import MenuWrap from './MenuWrap';
 import '@fortawesome/react-fontawesome'; 
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 export let LoginContext = false;
 class Sidebar extends Component {
   constructor (props) {
@@ -50,7 +51,9 @@ class Sidebar extends Component {
       <button key="0" className="button-text bm-button" href=""><i className="fa fa-fw fa-home" /><span >Home</span></button>,
       <button key="1" className="button-text bm-button" href=""><i className="fa fa-fw fa-bell-o" /><span>Alerts</span></button>,
       <button key="2" className="button-text bm-button" href=""><i className="fa fa-fw fa-envelope-o" /><span>Messages</span></button>,
+      <Link to = "/login">
       <button key="3" onClick={this.handleLogInClick} className="button-text bm-button-logout" href="">{ this.state.isLoggedIn ? <span>Logout</span> :<span>Log In</span>  }</button>
+      </Link>
     ]
     return items;
   }
