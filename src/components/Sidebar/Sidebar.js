@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, createContext } from 'react';
 import BurgerMenu from 'react-burger-menu';
 import MenuWrap from './MenuWrap';
 import '@fortawesome/react-fontawesome'; 
 import './Sidebar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+export let LoginContext = false;
 class Sidebar extends Component {
   constructor (props) {
     super(props);
@@ -23,12 +23,18 @@ class Sidebar extends Component {
   }
 
   handleLogInClick = () => {
-    if (this.state.isLoggedIn){
-      //banuiesc ca aici logica log out
-      console.log("LogOut");
+    if (!this.state.isLoggedIn){
+      
+
+      console.log(LoginContext);
     }
-    //banuiesc ca aici logica log in
-    else console.log("LogIn");
+   
+    else {
+      this.setState({
+        isLoggedIn:false
+      })
+      console.log(LoginContext);
+    } 
     
     this.setState(state => ({
       isLoggedIn : !state.isLoggedIn

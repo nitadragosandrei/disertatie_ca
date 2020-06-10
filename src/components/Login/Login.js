@@ -28,11 +28,13 @@ export default class Login extends Component{
         
         event.preventDefault();
      
-     
+       
         try {
           await Auth.signIn(this.state.email,this.state.password);
-        
-          alert("Logged in");
+         this.setState({
+           loggedIn:true
+         })
+         console.log(this.state);
         } catch (e) {
 
           alert(e.message);
@@ -61,7 +63,6 @@ export default class Login extends Component{
                 type="email"
                 value={this.state.email}
                 onChange={this.handleEmailChange}
-                {... console.log(this.state)}
               />
             </FormGroup>
             <FormGroup controlId="password" bsSize="large">

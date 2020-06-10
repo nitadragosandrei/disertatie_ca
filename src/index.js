@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Spreadsheet from './components/Spreadsheet/Spreadsheet';
@@ -8,7 +8,9 @@ import Draggable from 'react-draggable';
 import Login from './components/Login/Login';
 import { Amplify } from 'aws-amplify';
 import config from './config';
-
+import { AppContext } from './libs/contextLib';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -20,11 +22,22 @@ Amplify.configure({
 });
 
 ReactDOM.render(
+  
   <div>
+   
+    {/* <Router>
+    <Route exact path="/login">
+      <Login/>
+    </Route>
+    <Route exact path ="/">
     <Sidebar />
-    <Spreadsheet />
-    <Login></Login>
+    <Spreadsheet></Spreadsheet>
+    </Route>
+    </Router>
     
+     */}
+
+     <Routes></Routes>
   </div>,
 
   document.getElementById('root')

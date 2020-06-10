@@ -108,7 +108,8 @@ export default class Spreadsheet extends React.Component {
   render() {
     return (
       <ReactDataSheet
-        data={this.generateGrid(5,5)}
+        data={this.generateGrid(22,22
+          )}
         valueRenderer={(cell) => cell.value}
         dataRenderer={(cell) => cell.expr}
         onCellsChanged={this.onCellsChanged}
