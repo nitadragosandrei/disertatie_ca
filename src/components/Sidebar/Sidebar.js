@@ -4,23 +4,27 @@ import MenuWrap from "./MenuWrap";
 import "@fortawesome/react-fontawesome";
 import "./Sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import { AppContext } from "../../libs/contextLib";
+import {Auth} from "aws-amplify";
 
 export default function Sidebar() {
   const [currentMenu, setcurrentMenu] = useState("elastic");
   const [side, setSide] = useState("left");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const authenticated = React.useContext(AppContext);
-  function handleLogout() {
+  const history = useHistory();
+  async function handleLogout() {
+    await Auth.signOut();
     authenticated.userHasAuthenticated(false);
+    history.push("/login");
   }
   function getItems() {
     let items = [
-      <h1 key="header">
-        <i className="fa fa-contao " />
+      <h2 key="header">
+        <i className="fa fa-contao" />
         oncEng App
-      </h1>,
+      </h2>,
       <div>
         {authenticated.isAuthenticated ? (
           <Link to="/">

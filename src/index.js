@@ -11,7 +11,7 @@ import config from "./config";
 import { AppContext } from "./libs/contextLib";
 import Routes from "./Routes";
 import App from "./App";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
