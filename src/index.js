@@ -1,47 +1,28 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Spreadsheet from './components/Spreadsheet/Spreadsheet';
-import * as serviceWorker from './serviceWorker';
-import Sidebar from './components/Sidebar/Sidebar';
-import Draggable from 'react-draggable';
-import Login from './components/Login/Login';
-import { Amplify } from 'aws-amplify';
-import config from './config';
-import { AppContext } from './libs/contextLib';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-import Routes from './Routes';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Spreadsheet from "./components/Spreadsheet/Spreadsheet";
+import * as serviceWorker from "./serviceWorker";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Draggable from "react-draggable";
+import Login from "./components/Login/Login";
+import { Amplify } from "aws-amplify";
+import config from "./config";
+import { AppContext } from "./libs/contextLib";
+import Routes from "./Routes";
+import App from "./App";
+
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
     region: config.cognito.REGION,
     userPoolId: config.cognito.USER_POOL_ID,
     identityPoolId: config.cognito.IDENTITY_POOL_ID,
-    userPoolWebClientId: config.cognito.APP_CLIENT_ID
-  }
+    userPoolWebClientId: config.cognito.APP_CLIENT_ID,
+  },
 });
 
-ReactDOM.render(
-  
-  <div>
-   
-    {/* <Router>
-    <Route exact path="/login">
-      <Login/>
-    </Route>
-    <Route exact path ="/">
-    <Sidebar />
-    <Spreadsheet></Spreadsheet>
-    </Route>
-    </Router>
-    
-     */}
-
-     <Routes></Routes>
-  </div>,
-
-  document.getElementById('root')
-);
+ReactDOM.render(<App></App>, document.getElementById("root"));
 
 serviceWorker.unregister();
 // const rootElement = document.getElementById("root");
