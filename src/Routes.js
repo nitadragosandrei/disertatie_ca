@@ -4,7 +4,9 @@ import Login from "./components/Login/Login";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Spreadsheet from "./components/Spreadsheet/Spreadsheet";
 import { AppContext } from "./libs/contextLib";
-import  Signup  from "./components/Signup/Signup";
+import Signup from "./components/Signup/signup";
+import PushForm from "./components/PushForm/PushForm";
+import Draggable from "react-draggable";
 
 export default function Routes() {
   const authenticated = React.useContext(AppContext);
@@ -12,9 +14,13 @@ export default function Routes() {
     <Router>
       <Switch>
         <Route exact path="/">
-          {console.log(authenticated)}
           <Sidebar></Sidebar>
           <Spreadsheet></Spreadsheet>
+          <Draggable>
+            <div>
+              <PushForm />
+            </div>
+          </Draggable>
         </Route>
         <Route exact path="/signup">
           <Sidebar></Sidebar>
