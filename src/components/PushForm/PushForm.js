@@ -1,9 +1,23 @@
 import React, { useState } from "react";
-import { InputGroup, Form, Row, Col, Button } from "react-bootstrap";
+import {
+  InputGroup,
+  Form,
+  Row,
+  Col,
+  Button,
+  FormGroup,
+  FormControl,
+  FormLabel,
+} from "react-bootstrap";
 import "./PushForm.css";
-function PushForm() {
-  const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
+import { useFormFields } from "../../libs/hooksLib";
 
+function PushForm() {
+  const [inputList, setInputList] = useState([{ valueName: "", value: "" }]);
+  const [fields, handleFieldChange] = useFormFields({
+    valueName: "",
+    value: "",
+  });
   // handle input change
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -21,38 +35,38 @@ function PushForm() {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { firstName: "", lastName: "" }]);
+    setInputList([...inputList, { valueName: "", value: "" }]);
   };
 
   return (
     <div className="myForm">
       <h3>Insert your values</h3>
-      {inputList.map((x, i) => {
+      {inputList.map((fields, i) => {
         return (
           <div className="box">
             <div class="d-flex justify-content-center">
-              <Form>
-                <Form.Row>
-                  <Col>
-                    <Form.Control
-                      className=".d-flex"
-                      placeholder="Value Name"
-                      name="Name"
-                      value={x.firstName}
-                      onChange={(e) => handleInputChange(e, i)}
-                    ></Form.Control>
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      placeholder="Value"
-                      className="ml10"
-                      name="Value"
-                      value={x.lastName}
-                      onChange={(e) => handleInputChange(e, i)}
-                    ></Form.Control>
-                  </Col>
-                </Form.Row>
-              </Form>
+              <form>
+                <FormGroup controlId="email" bsSize="large">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl
+                    className=".d-flex"
+                    placeholder="Value Name"
+                    name="valueName"
+                    value={fields.valueName}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                </FormGroup>
+                <FormGroup controlId="password" bsSize="large">
+                  <FormLabel>Password</FormLabel>
+                  <FormControl
+                    placeholder="Value"
+                    className="ml10"
+                    name="value"
+                    value={fields.value}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                </FormGroup>
+              </form>
             </div>
             <div className=".d-flex">
               {inputList.length !== 1 && (
