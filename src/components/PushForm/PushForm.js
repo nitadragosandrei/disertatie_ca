@@ -46,26 +46,27 @@ function PushForm() {
           <div className="box">
             <div class="d-flex justify-content-center">
               <form>
-                <FormGroup controlId="email" bsSize="large">
-                  <FormLabel>Email</FormLabel>
-                  <FormControl
-                    className=".d-flex"
-                    placeholder="Value Name"
-                    name="valueName"
-                    value={fields.valueName}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                  <FormLabel>Password</FormLabel>
-                  <FormControl
-                    placeholder="Value"
-                    className="ml10"
-                    name="value"
-                    value={fields.value}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
-                </FormGroup>
+                <div class="form-group row">
+                  <FormGroup controlId="email" bsSize="large">
+                    <FormControl
+                      className=".d-flex"
+                      placeholder="Value Name"
+                      name="valueName"
+                      value={fields.valueName}
+                      onChange={(e) => handleInputChange(e, i)}
+                    />
+                  </FormGroup>
+
+                  <FormGroup controlId="password" bsSize="large">
+                    <FormControl
+                      placeholder="Value"
+                      className="ml10"
+                      name="value"
+                      value={fields.value}
+                      onChange={(e) => handleInputChange(e, i)}
+                    />
+                  </FormGroup>
+                </div>
               </form>
             </div>
             <div className=".d-flex">
