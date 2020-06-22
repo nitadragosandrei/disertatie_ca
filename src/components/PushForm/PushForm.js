@@ -89,6 +89,7 @@ function PushForm() {
         );
       })}
       <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+      <Button className="butoane">Push to DB</Button>
     </div>
   );
 }
