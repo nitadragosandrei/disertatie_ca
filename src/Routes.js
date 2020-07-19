@@ -7,6 +7,7 @@ import { AppContext } from "./libs/contextLib";
 import Signup from "./components/Signup/signup";
 import PushForm from "./components/PushForm/PushForm";
 import Draggable from "react-draggable";
+import { getItems } from "./api/index";
 
 export default function Routes() {
   const authenticated = React.useContext(AppContext);
@@ -21,6 +22,13 @@ export default function Routes() {
               <PushForm />
             </div>
           </Draggable>
+          <button
+            onClick={async () => {
+              {
+                console.log(await getItems());
+              }
+            }}
+          ></button>
         </Route>
         <Route exact path="/signup">
           <Sidebar></Sidebar>

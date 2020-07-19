@@ -11,12 +11,13 @@ import {
 } from "react-bootstrap";
 import "./PushForm.css";
 import { useFormFields } from "../../libs/hooksLib";
+import { postItem } from "../../api/index";
 
 function PushForm() {
-  const [inputList, setInputList] = useState([{ valueName: "", value: "" }]);
+  const [inputList, setInputList] = useState([{ userID: "", noteID: "" }]);
   const [fields, handleFieldChange] = useFormFields({
-    valueName: "",
-    value: "",
+    userID: "",
+    noteID: "",
   });
   // handle input change
   const handleInputChange = (e, index) => {
@@ -35,7 +36,7 @@ function PushForm() {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { valueName: "", value: "" }]);
+    setInputList([...inputList, { userID: "", noteID: "" }]);
   };
 
   return (
@@ -51,8 +52,8 @@ function PushForm() {
                     <FormControl
                       className=".d-flex"
                       placeholder="Value Name"
-                      name="valueName"
-                      value={fields.valueName}
+                      name="userID"
+                      value={fields.userID}
                       onChange={(e) => handleInputChange(e, i)}
                     />
                   </FormGroup>
@@ -61,8 +62,8 @@ function PushForm() {
                     <FormControl
                       placeholder="Value"
                       className="ml10"
-                      name="value"
-                      value={fields.value}
+                      name="noteID"
+                      value={fields.noteID}
                       onChange={(e) => handleInputChange(e, i)}
                     />
                   </FormGroup>
@@ -89,7 +90,17 @@ function PushForm() {
         );
       })}
       <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
-      <Button className="butoane">Push to DB</Button>
+      <Button
+        className="butoane"
+        onClick={async () => {
+          {
+            // console.log(inputList);
+            await postItem(inputList[0]);
+          }
+        }}
+      >
+        Push to DB
+      </Button>
     </div>
   );
 }
