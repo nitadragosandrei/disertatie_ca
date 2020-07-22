@@ -8,7 +8,7 @@ import Signup from "./components/Signup/signup";
 import PushForm from "./components/PushForm/PushForm";
 import Draggable from "react-draggable";
 import { getItems } from "./api/index";
-
+import CustomPaginationActionsTable from "./components/PullTable/PullTable";
 export default function Routes() {
   const authenticated = React.useContext(AppContext);
   return (
@@ -22,13 +22,12 @@ export default function Routes() {
               <PushForm />
             </div>
           </Draggable>
-          <button
-            onClick={async () => {
-              {
-                console.log(await getItems());
-              }
-            }}
-          ></button>
+
+          <Draggable>
+            <div>
+              <CustomPaginationActionsTable></CustomPaginationActionsTable>
+            </div>
+          </Draggable>
         </Route>
         <Route exact path="/signup">
           <Sidebar></Sidebar>
@@ -37,6 +36,20 @@ export default function Routes() {
         <Route exact path="/login">
           <Sidebar></Sidebar>
           <Login />
+        </Route>
+        <Route exact path="/tables">
+          <Sidebar></Sidebar>
+          <Draggable>
+            <div>
+              <PushForm />
+            </div>
+          </Draggable>
+
+          <Draggable>
+            <div>
+              <CustomPaginationActionsTable></CustomPaginationActionsTable>
+            </div>
+          </Draggable>
         </Route>
       </Switch>
     </Router>

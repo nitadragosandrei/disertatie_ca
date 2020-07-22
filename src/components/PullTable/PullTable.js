@@ -30,14 +30,17 @@ function TablePaginationActions(props) {
   const { count, page, rowsPerPage, onChangePage } = props;
 
   const handleFirstPageButtonClick = (event) => {
+    console.log(rows);
     onChangePage(event, 0);
   };
 
   const handleBackButtonClick = (event) => {
+    console.log(rows);
     onChangePage(event, page - 1);
   };
 
   const handleNextButtonClick = (event) => {
+    console.log(rows);
     onChangePage(event, page + 1);
   };
 
@@ -48,7 +51,6 @@ function TablePaginationActions(props) {
   const handleRefreshTableButtonClick = async (event) => {
     rows = [];
     let TableData = (await getItems()).data.Items;
-    console.log(TableData[1].userID);
     for (let i = 0; i < TableData.length; i++) {
       rows.push(createData(TableData[i].userID, TableData[i].noteID));
     }

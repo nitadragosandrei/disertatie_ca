@@ -80,16 +80,12 @@ function PushForm() {
                   Remove
                 </Button>
               )}
-              {inputList.length - 1 === i && (
-                <Button className="butoane" size="sm" onClick={handleAddClick}>
-                  Add
-                </Button>
-              )}
+              {inputList.length - 1 === i}
             </div>
           </div>
         );
       })}
-      <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+
       <Button
         className="butoane"
         onClick={async () => {
