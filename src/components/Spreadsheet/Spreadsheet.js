@@ -3,24 +3,25 @@ import _ from "lodash";
 import * as mathjs from "mathjs";
 import ReactDataSheet from "react-datasheet";
 import "./Spreadsheet.css";
-import {spreadSheetTable} from "./SpreadsheetState";
-
+import { spreadSheetTable } from "./SpreadsheetState";
+import { TableData } from "../PullTable/PullTable";
 export default class Spreadsheet extends React.Component {
   constructor(props) {
     super(props);
+
     this.onCellsChanged = this.onCellsChanged.bind(this);
-    this.state = spreadSheetTable
+    this.state = spreadSheetTable;
   }
 
-  generateGrid(rowi,colj) {
+  generateGrid(rowi, colj) {
     let rowArray = [];
     let colArray = [""];
-    
-    for(let i = 0 ;i <= rowi; i++){
+
+    for (let i = 0; i <= rowi; i++) {
       rowArray.push(i);
     }
 
-    for(let i = 65 ;i < 65+colj; i++){
+    for (let i = 65; i < 65 + colj; i++) {
       colArray.push(String.fromCharCode(i));
     }
     console.log(colArray);
@@ -108,8 +109,7 @@ export default class Spreadsheet extends React.Component {
   render() {
     return (
       <ReactDataSheet
-        data={this.generateGrid(22,22
-          )}
+        data={this.generateGrid(22, 22)}
         valueRenderer={(cell) => cell.value}
         dataRenderer={(cell) => cell.expr}
         onCellsChanged={this.onCellsChanged}

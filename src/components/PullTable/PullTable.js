@@ -16,6 +16,9 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { getItems } from "../../api/index";
+import { spreadSheetTable } from "../Spreadsheet/SpreadsheetState";
+
+export let TableData;
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -50,10 +53,11 @@ function TablePaginationActions(props) {
 
   const handleRefreshTableButtonClick = async (event) => {
     rows = [];
-    let TableData = (await getItems()).data.Items;
+    TableData = (await getItems()).data.Items;
     for (let i = 0; i < TableData.length; i++) {
       rows.push(createData(TableData[i].userID, TableData[i].noteID));
     }
+
     onChangePage(event, page + 1);
     onChangePage(event, page);
   };
