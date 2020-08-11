@@ -16,7 +16,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { getItems } from "../../api/index";
-import { spreadSheetTable } from "../Spreadsheet/SpreadsheetState";
+import { spreadSheetTable, me_vector } from "../Spreadsheet/SpreadsheetState";
 
 export let TableData;
 
@@ -51,15 +51,15 @@ function TablePaginationActions(props) {
     onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 
-  const handleRefreshTableButtonClick = async (event) => {
+  const handleRefreshTableButtonClick = (event) => {
     rows = [];
-    TableData = (await getItems()).data.Items;
-    for (let i = 0; i < TableData.length; i++) {
-      rows.push(createData(TableData[i].userID, TableData[i].noteID));
+    for (let i = 0; i < me_vector.length; i++) {
+      rows.push(
+        createData(me_vector[i].userID, me_vector[i].noteID, "Z" + (i + 1))
+      );
     }
-
-    onChangePage(event, page + 1);
-    onChangePage(event, page);
+    onChangePage(event, 0);
+    onChangePage(event, 1);
   };
 
   return (
@@ -121,7 +121,7 @@ function createData(name, calories, fat) {
   return { name, calories, fat };
 }
 
-let rows = [].sort((a, b) => (a.calories < b.calories ? -1 : 1));
+let rows = [];
 
 const useStyles2 = makeStyles({
   table: {

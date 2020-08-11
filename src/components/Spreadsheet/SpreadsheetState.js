@@ -3,7 +3,7 @@ import { getItems } from "../../api/index";
 import { intersect } from "mathjs";
 let Dragos, Dragos1;
 let primaIteratie = false;
-let me_vector = new Array(25).fill(0);
+export let me_vector = new Array(25).fill(0);
 let definitDeja = false;
 let diferenta;
 let handleRefreshTableButtonClick = async () => {
@@ -11,7 +11,10 @@ let handleRefreshTableButtonClick = async () => {
     console.log("Prima");
     Dragos = (await getItems()).data.Items;
     for (let i = 0; i < Dragos.length; i++) {
-      me_vector[i] = Dragos[i].noteID;
+      me_vector[i] = {
+        userID: Dragos[i].userID,
+        noteID: Dragos[i].noteID,
+      };
     }
     Dragos1 = Dragos;
     primaIteratie = true;
@@ -32,7 +35,10 @@ let handleRefreshTableButtonClick = async () => {
   }
   //trebuie adaugata diferenta in vector la elementul diferit de 0
   if (diferenta) {
-    me_vector[Dragos1.length - 1] = diferenta.noteID;
+    me_vector[Dragos1.length - 1] = {
+      userID: diferenta.userID,
+      noteID: diferenta.noteID,
+    };
     diferenta = false;
   }
   console.log(Dragos);
@@ -696,56 +702,130 @@ let spreadSheetTable = {
 };
 setInterval(function () {
   handleRefreshTableButtonClick();
-  spreadSheetTable.Z1.value = me_vector[0];
   try {
+    spreadSheetTable.Z1.value = me_vector[0].noteID;
+  } catch {
+    spreadSheetTable.Z1.value = me_vector[0];
+  }
+  try {
+    spreadSheetTable.Z2.value = me_vector[1].noteID;
+  } catch {
     spreadSheetTable.Z2.value = me_vector[1];
-  } catch {
-    spreadSheetTable.Z2.value = me_vector[1];
   }
   try {
-    spreadSheetTable.Z3.value = me_vector[2];
+    spreadSheetTable.Z3.value = me_vector[2].noteID;
   } catch {
     spreadSheetTable.Z3.value = me_vector[2];
   }
   try {
-    spreadSheetTable.Z4.value = me_vector[3];
+    spreadSheetTable.Z4.value = me_vector[3].noteID;
   } catch {
     spreadSheetTable.Z4.value = me_vector[3];
   }
   try {
-    spreadSheetTable.Z5.value = me_vector[4];
+    spreadSheetTable.Z5.value = me_vector[4].noteID;
   } catch {
     spreadSheetTable.Z5.value = me_vector[4];
   }
   try {
-    spreadSheetTable.Z6.value = me_vector[5];
+    spreadSheetTable.Z6.value = me_vector[5].noteID;
   } catch {
     spreadSheetTable.Z6.value = me_vector[5];
   }
   try {
-    spreadSheetTable.Z7.value = me_vector[6];
+    spreadSheetTable.Z7.value = me_vector[6].noteID;
   } catch {
     spreadSheetTable.Z7.value = me_vector[6];
   }
   try {
-    spreadSheetTable.Z8.value = me_vector[7];
+    spreadSheetTable.Z8.value = me_vector[7].noteID;
   } catch {
     spreadSheetTable.Z8.value = me_vector[7];
   }
   try {
-    spreadSheetTable.Z9.value = me_vector[8];
+    spreadSheetTable.Z9.value = me_vector[8].noteID;
   } catch {
     spreadSheetTable.Z9.value = me_vector[8];
   }
   try {
-    spreadSheetTable.Z10.value = me_vector[9];
+    spreadSheetTable.Z10.value = me_vector[9].noteID;
   } catch {
     spreadSheetTable.Z10.value = me_vector[9];
   }
   try {
-    spreadSheetTable.Z1.value = me_vector[10];
+    spreadSheetTable.Z11.value = me_vector[10].noteID;
   } catch {
-    spreadSheetTable.Z1.value = me_vector[10];
+    spreadSheetTable.Z11.value = me_vector[10];
+  }
+  try {
+    spreadSheetTable.Z12.value = me_vector[11].noteID;
+  } catch {
+    spreadSheetTable.Z12.value = me_vector[11];
+  }
+  try {
+    spreadSheetTable.Z13.value = me_vector[12].noteID;
+  } catch {
+    spreadSheetTable.Z13.value = me_vector[12];
+  }
+  try {
+    spreadSheetTable.Z14.value = me_vector[13].noteID;
+  } catch {
+    spreadSheetTable.Z14.value = me_vector[13];
+  }
+  try {
+    spreadSheetTable.Z15.value = me_vector[14].noteID;
+  } catch {
+    spreadSheetTable.Z15.value = me_vector[14];
+  }
+  try {
+    spreadSheetTable.Z16.value = me_vector[15].noteID;
+  } catch {
+    spreadSheetTable.Z16.value = me_vector[15];
+  }
+  try {
+    spreadSheetTable.Z17.value = me_vector[16].noteID;
+  } catch {
+    spreadSheetTable.Z17.value = me_vector[16];
+  }
+  try {
+    spreadSheetTable.Z18.value = me_vector[17].noteID;
+  } catch {
+    spreadSheetTable.Z18.value = me_vector[17];
+  }
+  try {
+    spreadSheetTable.Z19.value = me_vector[18].noteID;
+  } catch {
+    spreadSheetTable.Z19.value = me_vector[18];
+  }
+  try {
+    spreadSheetTable.Z20.value = me_vector[19].noteID;
+  } catch {
+    spreadSheetTable.Z20.value = me_vector[19];
+  }
+  try {
+    spreadSheetTable.Z21.value = me_vector[20].noteID;
+  } catch {
+    spreadSheetTable.Z21.value = me_vector[20];
+  }
+  try {
+    spreadSheetTable.Z22.value = me_vector[21].noteID;
+  } catch {
+    spreadSheetTable.Z22.value = me_vector[21];
+  }
+  try {
+    spreadSheetTable.Z23.value = me_vector[22].noteID;
+  } catch {
+    spreadSheetTable.Z23.value = me_vector[22];
+  }
+  try {
+    spreadSheetTable.Z24.value = me_vector[23].noteID;
+  } catch {
+    spreadSheetTable.Z24.value = me_vector[23];
+  }
+  try {
+    spreadSheetTable.Z25.value = me_vector[24].noteID;
+  } catch {
+    spreadSheetTable.Z25.value = me_vector[24];
   }
 }, 5000);
 export { spreadSheetTable };
